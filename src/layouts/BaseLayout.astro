@@ -8,6 +8,7 @@
 
 import '../styles/global.css';
 import Starfield from '../components/ui/Starfield';
+import Raindrops from '../components/ui/Raindrops';
 import Navigation from '../components/ui/Navigation';
 import Footer from '../components/sections/Footer.astro';
 
@@ -80,6 +81,9 @@ const fullTitle = `${title} | Gocce di Stella`;
   <body class="min-h-screen flex flex-col">
     <!-- Starfield Background -->
     <Starfield client:load starCount={120} parallaxIntensity={0.015} />
+
+    <!-- Falling Droplets - "Gocce di Stella" -->
+    <Raindrops client:load dropCount={30} intensity="light" />
 
     <!-- Subtle gradient overlay for depth -->
     <div
