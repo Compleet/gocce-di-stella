@@ -1,5 +1,5 @@
 #!/bin/bash
-# Deploy Gocce di Stella to frrn.life/gocce
+# Deploy Gocce di Stella to Cloudflare Pages
 # Usage: ./deploy.sh
 
 set -e
@@ -7,10 +7,11 @@ set -e
 echo "🌟 Building Gocce di Stella..."
 npm run build
 
-echo "📦 Deploying to frrn.life/gocce..."
-sudo cp -r dist/* /var/www/frrn.life/gocce/
-sudo chown -R www-data:www-data /var/www/frrn.life/gocce
+echo "☁️ Deploying to Cloudflare Pages..."
+CLOUDFLARE_API_TOKEN="eP9b9ZcVQ_WnU5Ud1MAnVyH6XEbD460RQWKSp5-v" \
+CLOUDFLARE_ACCOUNT_ID="05c1c14b179be989445db9f5c2e26763" \
+npx wrangler pages deploy dist --project-name=essential-oils-italia
 
-echo "✅ Deployed to https://frrn.life/gocce"
-echo "   Italian: https://frrn.life/gocce/it"
-echo "   English: https://frrn.life/gocce/en"
+echo "✅ Deployed to https://essential-oils-italia.pages.dev"
+echo "   Italian: https://essential-oils-italia.pages.dev/it"
+echo "   English: https://essential-oils-italia.pages.dev/en"
