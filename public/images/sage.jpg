@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="sageBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#18191a"/>
+      <stop offset="100%" style="stop-color:#252830"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#sageBg)"/>
+  <circle cx="200" cy="200" r="120" fill="none" stroke="#d4af37" stroke-width="0.5" opacity="0.3"/>
+  <circle cx="200" cy="200" r="140" fill="none" stroke="#d4af37" stroke-width="0.3" opacity="0.2"/>
+  <!-- Sage leaves -->
+  <g transform="translate(200,200)">
+    <path d="M0 60 Q0 20 0 -20" stroke="#6a7a6a" stroke-width="2" fill="none"/>
+    <!-- Leaves -->
+    <ellipse cx="-30" cy="30" rx="25" ry="12" fill="#7a8a7a" opacity="0.7" transform="rotate(-20 -30 30)"/>
+    <ellipse cx="32" cy="20" rx="25" ry="12" fill="#6a7a6a" opacity="0.7" transform="rotate(25 32 20)"/>
+    <ellipse cx="-25" cy="-10" rx="22" ry="10" fill="#7a8a7a" opacity="0.6" transform="rotate(-15 -25 -10)"/>
+    <ellipse cx="28" cy="-25" rx="22" ry="10" fill="#6a7a6a" opacity="0.6" transform="rotate(20 28 -25)"/>
+    <ellipse cx="0" cy="-50" rx="18" ry="9" fill="#5a6a5a" opacity="0.5"/>
+  </g>
+  <text x="200" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#d4af37" opacity="0.8">Salvia del Piemonte</text>
+</svg>

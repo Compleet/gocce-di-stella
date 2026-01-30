@@ -1,0 +1,168 @@
+---
+/**
+ * Contact Page - Italian
+ * Pagina contatti con form e informazioni
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const lang = 'it';
+---
+
+<BaseLayout
+  title="Contatti"
+  description="Contattaci per qualsiasi domanda sui nostri oli essenziali italiani. Siamo qui per aiutarti."
+  lang={lang}
+  currentPath="/it/contact"
+>
+  <section class="relative py-32 md:py-40">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-16">
+          <div class="flex items-center justify-center gap-4 mb-8">
+            <div class="w-12 h-px bg-gradient-to-r from-transparent to-[var(--color-gold)]/50"></div>
+            <span class="text-[var(--color-gold)] text-sm tracking-[0.3em] uppercase">Contatti</span>
+            <div class="w-12 h-px bg-gradient-to-l from-transparent to-[var(--color-gold)]/50"></div>
+          </div>
+
+          <h1 class="mb-6">
+            <span class="block">Parliamo</span>
+            <span class="block text-[var(--color-gold)]">Insieme</span>
+          </h1>
+
+          <p class="text-[var(--text-lg)] text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+            Hai domande sui nostri oli essenziali? Vuoi saperne di più sulla provenienza
+            o hai bisogno di consigli? Siamo qui per te.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-16">
+          <!-- Contact Form -->
+          <div>
+            <h2 class="text-[var(--text-2xl)] mb-8">Scrivici</h2>
+
+            <form class="space-y-6">
+              <div>
+                <label class="block text-[var(--color-text-secondary)] text-sm mb-2">Nome</label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  class="w-full px-4 py-3 bg-[var(--color-twilight)]/30 border border-[var(--color-twilight)] rounded-sm text-[var(--color-cream)] placeholder-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-gold)]/50 transition-colors duration-300"
+                  placeholder="Il tuo nome"
+                />
+              </div>
+
+              <div>
+                <label class="block text-[var(--color-text-secondary)] text-sm mb-2">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  class="w-full px-4 py-3 bg-[var(--color-twilight)]/30 border border-[var(--color-twilight)] rounded-sm text-[var(--color-cream)] placeholder-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-gold)]/50 transition-colors duration-300"
+                  placeholder="la.tua@email.com"
+                />
+              </div>
+
+              <div>
+                <label class="block text-[var(--color-text-secondary)] text-sm mb-2">Oggetto</label>
+                <select
+                  name="subject"
+                  class="w-full px-4 py-3 bg-[var(--color-twilight)]/30 border border-[var(--color-twilight)] rounded-sm text-[var(--color-cream)] focus:outline-none focus:border-[var(--color-gold)]/50 transition-colors duration-300"
+                >
+                  <option value="general">Informazioni Generali</option>
+                  <option value="products">Domande sui Prodotti</option>
+                  <option value="orders">Ordini e Spedizioni</option>
+                  <option value="wholesale">Vendita all'Ingrosso</option>
+                  <option value="other">Altro</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-[var(--color-text-secondary)] text-sm mb-2">Messaggio</label>
+                <textarea
+                  name="message"
+                  rows="5"
+                  required
+                  class="w-full px-4 py-3 bg-[var(--color-twilight)]/30 border border-[var(--color-twilight)] rounded-sm text-[var(--color-cream)] placeholder-[var(--color-text-muted)] focus:outline-none focus:border-[var(--color-gold)]/50 transition-colors duration-300 resize-none"
+                  placeholder="Come possiamo aiutarti?"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-full">
+                <span>Invia Messaggio</span>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h2 class="text-[var(--text-2xl)] mb-8">Informazioni</h2>
+
+            <div class="space-y-8">
+              <div class="flex gap-4">
+                <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full border border-[var(--color-gold)]/20">
+                  <svg class="w-5 h-5 text-[var(--color-gold)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-[var(--color-cream)] font-medium mb-1">Email</h3>
+                  <a href="mailto:info@essenza.it" class="text-[var(--color-text-muted)] hover:text-[var(--color-gold)] transition-colors">
+                    info@essenza.it
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full border border-[var(--color-gold)]/20">
+                  <svg class="w-5 h-5 text-[var(--color-gold)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                    <circle cx="12" cy="9" r="2.5"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-[var(--color-cream)] font-medium mb-1">Sede</h3>
+                  <p class="text-[var(--color-text-muted)]">
+                    Toscana, Italia
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full border border-[var(--color-gold)]/20">
+                  <svg class="w-5 h-5 text-[var(--color-gold)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v6l4 2"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-[var(--color-cream)] font-medium mb-1">Orari Risposta</h3>
+                  <p class="text-[var(--color-text-muted)]">
+                    Lun - Ven: 9:00 - 18:00<br/>
+                    Risposta entro 24-48 ore
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ Link -->
+            <div class="mt-12 p-6 bg-[var(--color-twilight)]/20 rounded-sm border border-[var(--color-twilight)]">
+              <h3 class="text-[var(--color-cream)] font-medium mb-2">Domande Frequenti</h3>
+              <p class="text-[var(--color-text-muted)] text-sm mb-4">
+                Molte risposte alle domande comuni si trovano nella nostra sezione FAQ.
+              </p>
+              <a href="/it/faq" class="text-[var(--color-gold)] text-sm hover:underline">
+                Vai alle FAQ →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

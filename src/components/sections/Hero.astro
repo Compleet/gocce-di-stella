@@ -1,0 +1,155 @@
+---
+/**
+ * Hero Section - The captivating first impression
+ *
+ * A full-screen immersive experience that communicates the brand's
+ * mystical-organic essence. Features animated text reveal, floating
+ * botanical elements, and a subtle scroll indicator.
+ */
+
+interface Props {
+  lang: 'en' | 'it';
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    preheading: 'From the heart of Italy',
+    heading: "Nature's Ancient",
+    headingAccent: 'Wisdom',
+    subheading: 'Bottled',
+    description: "Hand-harvested essential oils from Italy's most treasured botanical regions. Each drop carries centuries of tradition and the pure essence of the Mediterranean.",
+    cta: 'Explore Collection',
+    ctaSecondary: 'Our Story'
+  },
+  it: {
+    preheading: "Dal cuore dell'Italia",
+    heading: "L'Antica Saggezza",
+    headingAccent: 'della Natura',
+    subheading: 'In Bottiglia',
+    description: "Oli essenziali raccolti a mano dalle regioni botaniche più preziose d'Italia. Ogni goccia porta secoli di tradizione e la pura essenza del Mediterraneo.",
+    cta: 'Esplora la Collezione',
+    ctaSecondary: 'La Nostra Storia'
+  }
+};
+
+const t = content[lang];
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Decorative Elements -->
+
+  <!-- Floating botanical silhouette - left -->
+  <div
+    class="absolute left-0 top-1/4 w-64 h-96 opacity-10 pointer-events-none"
+    style="background: url('/images/botanical-left.svg') no-repeat center; background-size: contain; animation: float 8s ease-in-out infinite;"
+  />
+
+  <!-- Floating botanical silhouette - right -->
+  <div
+    class="absolute right-0 bottom-1/4 w-48 h-80 opacity-10 pointer-events-none"
+    style="background: url('/images/botanical-right.svg') no-repeat center; background-size: contain; animation: float 10s ease-in-out infinite; animation-delay: -3s;"
+  />
+
+  <!-- Subtle radial glow behind content -->
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none"
+    style="background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);"
+  />
+
+  <!-- Content -->
+  <div class="container relative text-center px-4 py-32 md:py-40">
+    <!-- Preheading with decorative lines -->
+    <div class="flex items-center justify-center gap-4 mb-8 opacity-0 animate-fade-in-up">
+      <div class="w-12 h-px bg-gradient-to-r from-transparent to-[var(--color-gold)]/50"></div>
+      <span class="text-[var(--color-gold)] text-sm tracking-[0.3em] uppercase font-sans">
+        {t.preheading}
+      </span>
+      <div class="w-12 h-px bg-gradient-to-l from-transparent to-[var(--color-gold)]/50"></div>
+    </div>
+
+    <!-- Main Heading -->
+    <h1 class="mb-6">
+      <span class="block opacity-0 animate-fade-in-up delay-1">
+        {t.heading}
+      </span>
+      <span class="block text-[var(--color-gold)] opacity-0 animate-fade-in-up delay-2">
+        {t.headingAccent}
+      </span>
+      <span class="block text-[var(--text-4xl)] font-light tracking-wide opacity-0 animate-fade-in-up delay-3">
+        {t.subheading}
+      </span>
+    </h1>
+
+    <!-- Description -->
+    <p class="max-w-xl mx-auto text-[var(--text-lg)] leading-relaxed mb-12 opacity-0 animate-fade-in-up delay-4">
+      {t.description}
+    </p>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in-up delay-5">
+      <a
+        href={`/${lang}/shop`}
+        class="btn btn-primary group"
+      >
+        <span>{t.cta}</span>
+        <svg
+          class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </a>
+
+      <a
+        href={`/${lang}/about`}
+        class="btn btn-outline"
+      >
+        {t.ctaSecondary}
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-fade-in delay-5">
+    <span class="text-[var(--color-text-muted)] text-xs tracking-widest uppercase">
+      {lang === 'en' ? 'Scroll' : 'Scorri'}
+    </span>
+    <div class="w-px h-12 relative overflow-hidden">
+      <div
+        class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[var(--color-gold)] to-transparent"
+        style="animation: scrollIndicator 2s ease-in-out infinite;"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes scrollIndicator {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+
+  /* Ensure animations start from invisible state */
+  .animate-fade-in-up,
+  .animate-fade-in {
+    opacity: 0;
+  }
+</style>

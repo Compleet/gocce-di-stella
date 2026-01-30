@@ -1,0 +1,107 @@
+---
+/**
+ * Base Layout - The foundation of every page
+ *
+ * Includes the starfield background, navigation, and footer.
+ * Provides consistent structure across all pages.
+ */
+
+import '../styles/global.css';
+import Starfield from '../components/ui/Starfield';
+import Navigation from '../components/ui/Navigation';
+import Footer from '../components/sections/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: 'en' | 'it';
+  currentPath?: string;
+}
+
+const {
+  title,
+  description = 'Gocce di Stella - Premium Italian Essential Oils',
+  lang = 'en',
+  currentPath = '/'
+} = Astro.props;
+
+const fullTitle = `${title} | Gocce di Stella`;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+
+    <!-- Preconnect to font origins -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === 'it' ? 'it_IT' : 'en_US'} />
+
+    <title>{fullTitle}</title>
+
+    <!-- Smooth page transitions -->
+    <style is:global>
+      /* Initial page load animation */
+      @keyframes pageReveal {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      html {
+        animation: pageReveal 0.5s ease-out;
+      }
+
+      /* View transitions (for supported browsers) */
+      @view-transition {
+        navigation: auto;
+      }
+
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation-duration: 0.4s;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen flex flex-col">
+    <!-- Starfield Background -->
+    <Starfield client:load starCount={120} parallaxIntensity={0.015} />
+
+    <!-- Subtle gradient overlay for depth -->
+    <div
+      class="fixed inset-0 pointer-events-none"
+      style="background: radial-gradient(ellipse at 50% 0%, rgba(45, 40, 60, 0.3) 0%, transparent 60%); z-index: 1;"
+    />
+
+    <!-- Navigation -->
+    <Navigation client:load currentLang={lang} currentPath={currentPath} />
+
+    <!-- Main Content -->
+    <main class="flex-1 relative" style="z-index: 2;">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <Footer lang={lang} />
+
+    <!-- Snipcart (e-commerce) - loaded async -->
+    <script>
+      // Snipcart will be initialized here
+      // Configuration will connect to Stripe
+    </script>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+---
+/**
+ * Featured Products Section
+ *
+ * Showcases the star products in an asymmetric,
+ * editorial-style grid layout. Includes animated
+ * section reveal and elegant typography.
+ */
+
+import ProductCard from '../ui/ProductCard.astro';
+import { featuredProducts } from '../../data/products';
+
+interface Props {
+  lang: 'en' | 'it';
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    preheading: 'The Collection',
+    heading: 'Treasures of the',
+    headingAccent: 'Italian Earth',
+    description: 'Each essence is a journey through Italy\'s most revered botanical landscapes—from Alpine meadows to sun-drenched citrus groves.',
+    cta: 'View All Oils'
+  },
+  it: {
+    preheading: 'La Collezione',
+    heading: 'Tesori della',
+    headingAccent: 'Terra Italiana',
+    description: 'Ogni essenza è un viaggio attraverso i paesaggi botanici più venerati d\'Italia—dai prati alpini agli agrumeti baciati dal sole.',
+    cta: 'Vedi Tutti gli Oli'
+  }
+};
+
+const t = content[lang];
+---
+
+<section class="relative py-24 md:py-32">
+  <!-- Section Background Accent -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background: radial-gradient(ellipse at 30% 50%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);"
+  />
+
+  <div class="container">
+    <!-- Section Header -->
+    <div class="max-w-2xl mb-16 md:mb-24">
+      <!-- Preheading -->
+      <div class="flex items-center gap-4 mb-6">
+        <span class="text-[var(--color-gold)] text-sm tracking-[0.2em] uppercase">
+          {t.preheading}
+        </span>
+        <div class="flex-1 h-px bg-gradient-to-r from-[var(--color-gold)]/30 to-transparent max-w-32" />
+      </div>
+
+      <!-- Heading -->
+      <h2 class="mb-6">
+        <span class="block">{t.heading}</span>
+        <span class="text-[var(--color-gold)]">{t.headingAccent}</span>
+      </h2>
+
+      <!-- Description -->
+      <p class="text-[var(--text-lg)] leading-relaxed">
+        {t.description}
+      </p>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      {featuredProducts.map((product, index) => (
+        <div
+          class="opacity-0"
+          style={`animation: fadeInUp 0.7s ease-out forwards; animation-delay: ${index * 150}ms;`}
+        >
+          <ProductCard product={product} lang={lang} featured={index === 0} />
+        </div>
+      ))}
+    </div>
+
+    <!-- View All CTA -->
+    <div class="mt-16 text-center">
+      <a
+        href={`/${lang}/shop`}
+        class="inline-flex items-center gap-3 text-[var(--color-gold)] hover:text-[var(--color-soft-gold)] transition-colors duration-300 group"
+      >
+        <span class="text-sm tracking-widest uppercase">{t.cta}</span>
+        <svg
+          class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-2"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

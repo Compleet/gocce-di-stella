@@ -1,0 +1,337 @@
+@import "tailwindcss";
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+
+/*
+ * GOCCE DI STELLA - Essential Oils Italia
+ * Design System: Mature Mystical Starry Wisdom + Organic Nature
+ *
+ * The aesthetic bridges celestial wonder with earthly botanicals.
+ * Deep midnight skies meet warm amber light filtering through leaves.
+ * Stars reflected in glass bottles of precious plant essences.
+ */
+
+@theme {
+  /* ═══════════════════════════════════════════════════════════════
+   * COLOR SYSTEM
+   * Primary: Deep celestial blues and midnight tones
+   * Accent: Warm amber/gold (starlight, candle glow)
+   * Botanical: Muted sage and forest tones
+   * Neutral: Warm creams and soft charcoals
+   * ═══════════════════════════════════════════════════════════════ */
+
+  /* Celestial Depths - Primary */
+  --color-midnight: oklch(15% 0.02 260);
+  --color-deep-night: oklch(12% 0.015 260);
+  --color-twilight: oklch(25% 0.03 260);
+  --color-dusk: oklch(35% 0.04 260);
+
+  /* Starlight & Warmth - Accent */
+  --color-gold: oklch(75% 0.12 85);
+  --color-amber: oklch(70% 0.14 70);
+  --color-soft-gold: oklch(85% 0.08 85);
+  --color-champagne: oklch(92% 0.04 85);
+
+  /* Botanical Whispers */
+  --color-sage: oklch(55% 0.06 145);
+  --color-forest: oklch(40% 0.08 145);
+  --color-moss: oklch(45% 0.05 130);
+  --color-lavender-mist: oklch(70% 0.04 290);
+
+  /* Earth & Warmth */
+  --color-cream: oklch(96% 0.02 85);
+  --color-parchment: oklch(93% 0.03 80);
+  --color-stone: oklch(60% 0.02 60);
+  --color-charcoal: oklch(30% 0.01 260);
+
+  /* Text Colors */
+  --color-text-primary: oklch(92% 0.02 85);
+  --color-text-secondary: oklch(75% 0.02 85);
+  --color-text-muted: oklch(55% 0.02 260);
+  --color-text-dark: oklch(20% 0.01 260);
+
+  /* ═══════════════════════════════════════════════════════════════
+   * TYPOGRAPHY SCALE
+   * Cormorant Garamond: Elegant serif for headings - evokes timeless wisdom
+   * Inter: Clean sans-serif for body - modern clarity
+   * ═══════════════════════════════════════════════════════════════ */
+
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Fluid type scale - elegant proportions */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  --text-3xl: clamp(1.875rem, 1.4rem + 2.375vw, 2.75rem);
+  --text-4xl: clamp(2.25rem, 1.5rem + 3.75vw, 3.75rem);
+  --text-5xl: clamp(3rem, 1.8rem + 6vw, 5.5rem);
+  --text-6xl: clamp(3.75rem, 2rem + 8.75vw, 7.5rem);
+
+  /* ═══════════════════════════════════════════════════════════════
+   * SPACING & RHYTHM
+   * Generous whitespace creates calm, premium feel
+   * ═══════════════════════════════════════════════════════════════ */
+
+  --space-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --space-sm: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --space-md: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 1rem + 2.5vw, 3rem);
+  --space-xl: clamp(2rem, 1.2rem + 4vw, 5rem);
+  --space-2xl: clamp(3rem, 1.5rem + 7.5vw, 8rem);
+  --space-3xl: clamp(4rem, 2rem + 10vw, 12rem);
+
+  /* ═══════════════════════════════════════════════════════════════
+   * ANIMATION TIMINGS
+   * Organic, unhurried - like steam rising from essential oil diffuser
+   * ═══════════════════════════════════════════════════════════════ */
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-sine: cubic-bezier(0.37, 0, 0.63, 1);
+  --ease-organic: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --duration-instant: 100ms;
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 700ms;
+  --duration-slower: 1200ms;
+  --duration-glacial: 2000ms;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * BASE STYLES
+ * ═══════════════════════════════════════════════════════════════ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  background-color: var(--color-midnight);
+  overflow-x: hidden;
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-deep-night);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * TYPOGRAPHY
+ * ═══════════════════════════════════════════════════════════════ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-cream);
+  margin: 0;
+}
+
+h1 { font-size: var(--text-5xl); }
+h2 { font-size: var(--text-4xl); }
+h3 { font-size: var(--text-3xl); }
+h4 { font-size: var(--text-2xl); }
+h5 { font-size: var(--text-xl); }
+h6 { font-size: var(--text-lg); }
+
+p {
+  margin: 0 0 1.5em;
+  color: var(--color-text-secondary);
+}
+
+a {
+  color: var(--color-gold);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out-quart);
+}
+
+a:hover {
+  color: var(--color-soft-gold);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * UTILITY CLASSES
+ * ═══════════════════════════════════════════════════════════════ */
+
+.font-serif { font-family: var(--font-serif); }
+.font-sans { font-family: var(--font-sans); }
+
+.text-gold { color: var(--color-gold); }
+.text-cream { color: var(--color-cream); }
+.text-muted { color: var(--color-text-muted); }
+
+/* Elegant horizontal rule */
+.divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold) 20%,
+    var(--color-gold) 80%,
+    transparent
+  );
+  opacity: 0.3;
+  margin: var(--space-xl) 0;
+}
+
+/* Container with max-width */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+
+.container-narrow {
+  max-width: 900px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * ANIMATIONS
+ * ═══════════════════════════════════════════════════════════════ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes gentlePulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp var(--duration-slow) var(--ease-out-expo) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--duration-normal) var(--ease-out-quart) forwards;
+}
+
+/* Staggered animation delays */
+.delay-1 { animation-delay: 100ms; }
+.delay-2 { animation-delay: 200ms; }
+.delay-3 { animation-delay: 300ms; }
+.delay-4 { animation-delay: 400ms; }
+.delay-5 { animation-delay: 500ms; }
+
+/* ═══════════════════════════════════════════════════════════════
+ * BUTTONS
+ * ═══════════════════════════════════════════════════════════════ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.875em 2em;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-gold), var(--color-amber));
+  color: var(--color-deep-night);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px -10px var(--color-gold);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+}
+
+.btn-outline:hover {
+  background: var(--color-gold);
+  color: var(--color-deep-night);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+ * SCROLLBAR STYLING
+ * ═══════════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-deep-night);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-twilight);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dusk);
+}

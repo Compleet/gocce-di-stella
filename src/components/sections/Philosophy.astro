@@ -1,0 +1,177 @@
+---
+/**
+ * Philosophy Section - The brand story
+ *
+ * An immersive section that communicates the deeper
+ * meaning behind the brand. Features large imagery,
+ * elegant typography, and subtle parallax effects.
+ */
+
+interface Props {
+  lang: 'en' | 'it';
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    preheading: 'Our Philosophy',
+    heading: 'Where Earth Meets',
+    headingAccent: 'the Stars',
+    quote: 'In every drop of essential oil lives the memory of sun and rain, the patience of seasons, and the wisdom of generations who understood that nature holds the keys to wellbeing.',
+    paragraphs: [
+      'We believe that true wellness begins with a return to nature\'s ancient wisdom. Our oils are not merely products—they are bridges between the modern world and timeless botanical traditions.',
+      'Each harvest is a meditation. We work with small family farms across Italy, from the lavender fields of Tuscany to the citrus groves of Sicily, honoring methods passed down through centuries.'
+    ],
+    values: [
+      { title: 'Pure Origin', description: 'Single-source oils from Italy\'s finest botanical regions' },
+      { title: 'Artisan Craft', description: 'Small-batch distillation preserving every precious compound' },
+      { title: 'Deep Respect', description: 'Sustainable practices that honor the land and its keepers' }
+    ],
+    cta: 'Read Our Full Story'
+  },
+  it: {
+    preheading: 'La Nostra Filosofia',
+    heading: 'Dove la Terra Incontra',
+    headingAccent: 'le Stelle',
+    quote: 'In ogni goccia di olio essenziale vive la memoria del sole e della pioggia, la pazienza delle stagioni, e la saggezza di generazioni che compresero che la natura custodisce le chiavi del benessere.',
+    paragraphs: [
+      'Crediamo che il vero benessere inizi con un ritorno all\'antica saggezza della natura. I nostri oli non sono semplici prodotti—sono ponti tra il mondo moderno e le tradizioni botaniche senza tempo.',
+      'Ogni raccolta è una meditazione. Collaboriamo con piccole aziende agricole familiari in tutta Italia, dai campi di lavanda della Toscana agli agrumeti della Sicilia, onorando metodi tramandati nei secoli.'
+    ],
+    values: [
+      { title: 'Origine Pura', description: 'Oli da singola origine dalle migliori regioni botaniche d\'Italia' },
+      { title: 'Arte Artigianale', description: 'Distillazione in piccoli lotti che preserva ogni prezioso composto' },
+      { title: 'Profondo Rispetto', description: 'Pratiche sostenibili che onorano la terra e i suoi custodi' }
+    ],
+    cta: 'Leggi la Nostra Storia Completa'
+  }
+};
+
+const t = content[lang];
+---
+
+<section class="relative py-24 md:py-40 overflow-hidden">
+  <!-- Background Elements -->
+  <div class="absolute inset-0 pointer-events-none">
+    <!-- Large decorative circle -->
+    <div
+      class="absolute -left-1/4 top-1/4 w-[600px] h-[600px] rounded-full border border-[var(--color-gold)]/5"
+    />
+    <div
+      class="absolute -left-1/4 top-1/4 w-[700px] h-[700px] rounded-full border border-[var(--color-gold)]/3"
+    />
+
+    <!-- Constellation dots -->
+    <div class="absolute top-20 right-1/4 w-1 h-1 bg-[var(--color-gold)]/40 rounded-full" />
+    <div class="absolute top-32 right-1/3 w-1.5 h-1.5 bg-[var(--color-gold)]/30 rounded-full" />
+    <div class="absolute top-24 right-[30%] w-0.5 h-0.5 bg-[var(--color-gold)]/50 rounded-full" />
+  </div>
+
+  <div class="container">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <!-- Left: Image/Visual -->
+      <div class="relative">
+        <!-- Main image container -->
+        <div class="relative aspect-[4/5] rounded-sm overflow-hidden">
+          <!-- Placeholder gradient -->
+          <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-twilight)] via-[var(--color-midnight)] to-[var(--color-deep-night)]">
+            <!-- Decorative botanical illustration overlay -->
+            <div
+              class="absolute inset-0 opacity-20"
+              style="background-image: url('/images/botanical-pattern.svg'); background-size: 200px; background-position: center;"
+            />
+          </div>
+
+          <!-- Image will replace this -->
+          <img
+            src="/images/philosophy.jpg"
+            alt="Essential oil distillation"
+            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+            loading="lazy"
+            onload="this.style.opacity = 1"
+            onerror="this.style.display = 'none'"
+          />
+        </div>
+
+        <!-- Floating accent card -->
+        <div class="absolute -bottom-8 -right-8 w-48 md:w-64 p-6 bg-[var(--color-deep-night)]/90 backdrop-blur-md border border-[var(--color-gold)]/10 rounded-sm">
+          <div class="text-[var(--color-gold)] text-4xl md:text-5xl font-serif mb-2">100%</div>
+          <div class="text-[var(--color-text-secondary)] text-sm leading-relaxed">
+            {lang === 'en' ? 'Pure Italian botanicals, ethically sourced' : 'Botaniche italiane pure, eticamente raccolte'}
+          </div>
+        </div>
+
+        <!-- Decorative line -->
+        <div class="absolute -left-4 top-1/3 w-8 h-px bg-[var(--color-gold)]/30" />
+      </div>
+
+      <!-- Right: Content -->
+      <div class="lg:pl-8">
+        <!-- Preheading -->
+        <div class="flex items-center gap-4 mb-6">
+          <span class="text-[var(--color-gold)] text-sm tracking-[0.2em] uppercase">
+            {t.preheading}
+          </span>
+        </div>
+
+        <!-- Heading -->
+        <h2 class="mb-8">
+          <span class="block">{t.heading}</span>
+          <span class="text-[var(--color-gold)]">{t.headingAccent}</span>
+        </h2>
+
+        <!-- Quote -->
+        <blockquote class="relative pl-6 mb-8 border-l-2 border-[var(--color-gold)]/30">
+          <p class="font-serif text-[var(--text-xl)] text-[var(--color-cream)] italic leading-relaxed">
+            "{t.quote}"
+          </p>
+        </blockquote>
+
+        <!-- Paragraphs -->
+        {t.paragraphs.map((para) => (
+          <p class="mb-6 text-[var(--color-text-secondary)] leading-relaxed">
+            {para}
+          </p>
+        ))}
+
+        <!-- Values Grid -->
+        <div class="grid sm:grid-cols-3 gap-6 mt-12 pt-12 border-t border-[var(--color-twilight)]">
+          {t.values.map((value) => (
+            <div>
+              <h4 class="text-[var(--color-cream)] text-sm font-medium mb-2">
+                {value.title}
+              </h4>
+              <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">
+                {value.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-12">
+          <a
+            href={`/${lang}/about`}
+            class="inline-flex items-center gap-3 text-[var(--color-gold)] hover:text-[var(--color-soft-gold)] transition-colors duration-300 group"
+          >
+            <span class="text-sm tracking-widest uppercase">{t.cta}</span>
+            <svg
+              class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-2"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

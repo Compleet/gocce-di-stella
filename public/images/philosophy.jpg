@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="philBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1815"/>
+      <stop offset="50%" style="stop-color:#252220"/>
+      <stop offset="100%" style="stop-color:#1a1815"/>
+    </linearGradient>
+    <linearGradient id="goldShine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4af37"/>
+      <stop offset="50%" style="stop-color:#e8c847"/>
+      <stop offset="100%" style="stop-color:#d4af37"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#philBg)"/>
+
+  <!-- Decorative border -->
+  <rect x="30" y="30" width="540" height="340" fill="none" stroke="#d4af37" stroke-width="0.5" opacity="0.3"/>
+  <rect x="40" y="40" width="520" height="320" fill="none" stroke="#d4af37" stroke-width="0.3" opacity="0.2"/>
+
+  <!-- Central botanical motif - stylized distillation/essence -->
+  <g transform="translate(300,200)">
+    <!-- Essence drop -->
+    <path d="M0 -80 Q30 -40 30 20 Q30 60 0 80 Q-30 60 -30 20 Q-30 -40 0 -80"
+          fill="none" stroke="url(#goldShine)" stroke-width="1.5" opacity="0.6"/>
+
+    <!-- Inner drop -->
+    <path d="M0 -50 Q18 -25 18 15 Q18 40 0 55 Q-18 40 -18 15 Q-18 -25 0 -50"
+          fill="none" stroke="#d4af37" stroke-width="1" opacity="0.4"/>
+
+    <!-- Radiating lines (essence dispersing) -->
+    <g opacity="0.3" stroke="#d4af37" stroke-width="0.5">
+      <line x1="-80" y1="0" x2="-45" y2="0"/>
+      <line x1="45" y1="0" x2="80" y2="0"/>
+      <line x1="-60" y1="-60" x2="-35" y2="-35"/>
+      <line x1="35" y1="-35" x2="60" y2="-60"/>
+      <line x1="-60" y1="60" x2="-35" y2="35"/>
+      <line x1="35" y1="35" x2="60" y2="60"/>
+    </g>
+
+    <!-- Botanical elements surrounding -->
+    <g opacity="0.4" stroke="#6a7a6a" stroke-width="1" fill="none">
+      <!-- Left branch -->
+      <path d="M-100 80 Q-80 40 -60 0 Q-50 -30 -55 -60"/>
+      <path d="M-70 50 Q-90 45 -100 55"/>
+      <path d="M-62 20 Q-85 12 -95 25"/>
+      <path d="M-58 -10 Q-78 -20 -88 -8"/>
+
+      <!-- Right branch -->
+      <path d="M100 80 Q80 40 60 0 Q50 -30 55 -60"/>
+      <path d="M70 50 Q90 45 100 55"/>
+      <path d="M62 20 Q85 12 95 25"/>
+      <path d="M58 -10 Q78 -20 88 -8"/>
+    </g>
+
+    <!-- Stars/sparkles -->
+    <g fill="#d4af37" opacity="0.5">
+      <circle cx="-120" cy="-40" r="1.5"/>
+      <circle cx="125" cy="-50" r="1"/>
+      <circle cx="-90" cy="90" r="1"/>
+      <circle cx="100" cy="85" r="1.5"/>
+      <circle cx="0" cy="-110" r="2"/>
+    </g>
+  </g>
+
+  <!-- Bottom text area suggestion -->
+  <text x="300" y="360" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#d4af37" opacity="0.5" letter-spacing="0.2em">ESSENZA</text>
+</svg>

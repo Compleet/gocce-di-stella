@@ -1,0 +1,195 @@
+---
+/**
+ * Product Card - Elegant product display
+ *
+ * A refined card component with subtle hover effects,
+ * image zoom, and smooth transitions. Designed to
+ * showcase products with sophistication.
+ */
+
+import type { Product } from '../../data/products';
+
+interface Props {
+  product: Product;
+  lang: 'en' | 'it';
+  featured?: boolean;
+}
+
+const { product, lang, featured = false } = Astro.props;
+
+const name = product.name[lang];
+const tagline = product.tagline[lang];
+const price = new Intl.NumberFormat(lang === 'it' ? 'it-IT' : 'en-US', {
+  style: 'currency',
+  currency: product.currency
+}).format(product.price);
+---
+
+<article
+  class:list={[
+    'group relative',
+    featured ? 'col-span-2 row-span-2' : ''
+  ]}
+>
+  <a
+    href={`/${lang}/products/${product.slug}`}
+    class="block relative overflow-hidden bg-[var(--color-twilight)]/30 backdrop-blur-sm rounded-sm"
+  >
+    <!-- Image Container -->
+    <div class="relative aspect-[3/4] overflow-hidden">
+      <!-- Placeholder gradient for when images aren't available -->
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-[var(--color-twilight)] to-[var(--color-midnight)]"
+        data-mood={product.mood}
+      />
+
+      <!-- Product Image -->
+      <img
+        src={product.image}
+        alt={name}
+        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-700 group-hover:scale-105"
+        loading="lazy"
+        onload="this.style.opacity = 1"
+        onerror="this.style.display = 'none'"
+      />
+
+      <!-- Hover Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-deep-night)]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+      <!-- Quick Add Button (appears on hover) -->
+      <div class="absolute bottom-4 left-4 right-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+        <button
+          class="w-full py-3 bg-[var(--color-gold)] text-[var(--color-deep-night)] text-sm font-medium tracking-wider uppercase rounded-sm hover:bg-[var(--color-soft-gold)] transition-colors duration-300"
+          data-product-id={product.id}
+        >
+          {lang === 'en' ? 'Quick Add' : 'Aggiungi'}
+        </button>
+      </div>
+
+      <!-- Origin Badge -->
+      <div class="absolute top-4 left-4">
+        <span class="px-3 py-1.5 bg-[var(--color-deep-night)]/70 backdrop-blur-sm text-[var(--color-gold)] text-xs tracking-wider rounded-sm">
+          {product.origin}
+        </span>
+      </div>
+
+      <!-- Featured Badge -->
+      {featured && (
+        <div class="absolute top-4 right-4">
+          <span class="px-3 py-1.5 bg-[var(--color-gold)] text-[var(--color-deep-night)] text-xs font-medium tracking-wider uppercase rounded-sm">
+            {lang === 'en' ? 'Featured' : 'In Evidenza'}
+          </span>
+        </div>
+      )}
+    </div>
+
+    <!-- Content -->
+    <div class="p-5">
+      <!-- Product Name -->
+      <h3 class="font-serif text-[var(--text-xl)] text-[var(--color-cream)] mb-1 group-hover:text-[var(--color-gold)] transition-colors duration-300">
+        {name}
+      </h3>
+
+      <!-- Tagline -->
+      <p class="text-[var(--color-text-muted)] text-sm mb-3 line-clamp-1">
+        {tagline}
+      </p>
+
+      <!-- Price & Volume -->
+      <div class="flex items-baseline justify-between">
+        <span class="text-[var(--color-gold)] font-medium">
+          {price}
+        </span>
+        <span class="text-[var(--color-text-muted)] text-xs">
+          {product.volume}
+        </span>
+      </div>
+    </div>
+
+    <!-- Decorative corner accent -->
+    <div class="absolute top-0 right-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+      <svg viewBox="0 0 64 64" class="w-full h-full">
+        <path
+          d="M64 0 L64 64 L48 64 Q64 64 64 48 L64 0"
+          fill="none"
+          stroke="var(--color-gold)"
+          stroke-width="1"
+          opacity="0.3"
+        />
+      </svg>
+    </div>
+  </a>
+</article>
+
+<style>
+  /* Mood-based gradient backgrounds for placeholder images */
+  [data-mood="calm"] {
+    background: linear-gradient(135deg,
+      oklch(25% 0.04 280) 0%,
+      oklch(20% 0.03 260) 100%
+    );
+  }
+
+  [data-mood="bright"] {
+    background: linear-gradient(135deg,
+      oklch(30% 0.06 80) 0%,
+      oklch(20% 0.04 60) 100%
+    );
+  }
+
+  [data-mood="energize"] {
+    background: linear-gradient(135deg,
+      oklch(28% 0.05 145) 0%,
+      oklch(18% 0.03 145) 100%
+    );
+  }
+
+  [data-mood="joy"] {
+    background: linear-gradient(135deg,
+      oklch(32% 0.08 85) 0%,
+      oklch(20% 0.05 75) 100%
+    );
+  }
+
+  [data-mood="wisdom"] {
+    background: linear-gradient(135deg,
+      oklch(25% 0.04 290) 0%,
+      oklch(18% 0.03 270) 100%
+    );
+  }
+
+  [data-mood="warmth"] {
+    background: linear-gradient(135deg,
+      oklch(30% 0.07 50) 0%,
+      oklch(20% 0.05 40) 100%
+    );
+  }
+
+  [data-mood="clarity"] {
+    background: linear-gradient(135deg,
+      oklch(28% 0.04 180) 0%,
+      oklch(18% 0.02 180) 100%
+    );
+  }
+
+  [data-mood="refresh"] {
+    background: linear-gradient(135deg,
+      oklch(30% 0.06 165) 0%,
+      oklch(20% 0.04 160) 100%
+    );
+  }
+
+  [data-mood="ground"] {
+    background: linear-gradient(135deg,
+      oklch(25% 0.03 130) 0%,
+      oklch(18% 0.02 120) 100%
+    );
+  }
+
+  [data-mood="luxury"] {
+    background: linear-gradient(135deg,
+      oklch(28% 0.05 320) 0%,
+      oklch(18% 0.04 300) 100%
+    );
+  }
+</style>

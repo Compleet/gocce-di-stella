@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bergBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1815"/>
+      <stop offset="100%" style="stop-color:#2d2820"/>
+    </linearGradient>
+    <radialGradient id="bergFruit" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" style="stop-color:#e8c547"/>
+      <stop offset="70%" style="stop-color:#c4a030"/>
+      <stop offset="100%" style="stop-color:#8b7020"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bergBg)"/>
+  <circle cx="200" cy="200" r="120" fill="none" stroke="#d4af37" stroke-width="0.5" opacity="0.3"/>
+  <circle cx="200" cy="200" r="140" fill="none" stroke="#d4af37" stroke-width="0.3" opacity="0.2"/>
+  <!-- Bergamot fruit -->
+  <circle cx="200" cy="190" r="55" fill="url(#bergFruit)" opacity="0.9"/>
+  <ellipse cx="200" cy="140" rx="8" ry="5" fill="#4a5530" opacity="0.8"/>
+  <!-- Leaf -->
+  <path d="M208 140 Q235 120 250 140 Q235 145 210 142" fill="#3a4520" opacity="0.7"/>
+  <text x="200" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#d4af37" opacity="0.8">Bergamotto di Calabria</text>
+</svg>

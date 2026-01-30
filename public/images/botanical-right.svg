@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 320" fill="none">
+  <!-- Elegant botanical silhouette - rosemary branch -->
+  <g opacity="0.6" stroke="#d4af37" stroke-width="1" fill="none">
+    <!-- Main curved stem -->
+    <path d="M75 300 Q80 240 70 180 Q60 120 75 60 Q85 20 70 5"/>
+    <!-- Needle-like leaves - left -->
+    <path d="M70 280 Q45 275 30 285"/>
+    <path d="M68 250 Q40 240 25 255"/>
+    <path d="M65 220 Q35 205 20 225"/>
+    <path d="M62 190 Q30 170 18 195"/>
+    <path d="M65 160 Q35 140 25 165"/>
+    <path d="M70 130 Q45 110 40 135"/>
+    <path d="M75 100 Q55 85 50 105"/>
+    <path d="M78 70 Q60 55 58 75"/>
+    <!-- Needle-like leaves - right -->
+    <path d="M72 265 Q100 255 115 270"/>
+    <path d="M70 235 Q105 220 120 240"/>
+    <path d="M67 205 Q108 185 125 210"/>
+    <path d="M65 175 Q110 150 128 180"/>
+    <path d="M68 145 Q105 120 118 150"/>
+    <path d="M72 115 Q100 95 110 120"/>
+    <path d="M76 85 Q95 70 100 90"/>
+    <path d="M75 55 Q88 42 90 60"/>
+  </g>
+</svg>

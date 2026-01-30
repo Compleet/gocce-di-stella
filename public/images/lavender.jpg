@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="lavBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1520"/>
+      <stop offset="100%" style="stop-color:#2d2840"/>
+    </linearGradient>
+    <linearGradient id="lavAccent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b8bb8"/>
+      <stop offset="100%" style="stop-color:#6b5b8a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#lavBg)"/>
+  <!-- Decorative circle -->
+  <circle cx="200" cy="200" r="120" fill="none" stroke="#d4af37" stroke-width="0.5" opacity="0.3"/>
+  <circle cx="200" cy="200" r="140" fill="none" stroke="#d4af37" stroke-width="0.3" opacity="0.2"/>
+  <!-- Lavender sprig -->
+  <g transform="translate(200,200)">
+    <path d="M0 80 Q-5 40 0 -60" stroke="url(#lavAccent)" stroke-width="2" fill="none"/>
+    <ellipse cx="-3" cy="-65" rx="5" ry="10" fill="#9b8bb8" opacity="0.8"/>
+    <ellipse cx="3" cy="-75" rx="4" ry="9" fill="#8b7ba8" opacity="0.8"/>
+    <ellipse cx="-2" cy="-85" rx="4" ry="8" fill="#7b6b98" opacity="0.8"/>
+    <ellipse cx="2" cy="-95" rx="3" ry="7" fill="#6b5b88" opacity="0.8"/>
+    <ellipse cx="0" cy="-103" rx="3" ry="6" fill="#5b4b78" opacity="0.8"/>
+  </g>
+  <!-- Product name -->
+  <text x="200" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#d4af37" opacity="0.8">Lavanda Toscana</text>
+</svg>

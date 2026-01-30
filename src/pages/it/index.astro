@@ -1,0 +1,86 @@
+---
+/**
+ * Italian Homepage
+ *
+ * La pagina principale che presenta il brand, i prodotti in evidenza,
+ * e la filosofia aziendale. Progettata per creare una connessione
+ * emotiva immediata con i visitatori.
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/sections/Hero.astro';
+import FeaturedProducts from '../../components/sections/FeaturedProducts.astro';
+import Philosophy from '../../components/sections/Philosophy.astro';
+
+const lang = 'it';
+---
+
+<BaseLayout
+  title="Oli Essenziali Italiani Premium"
+  description="Scopri la collezione Gocce di Stella di oli essenziali raccolti a mano dalle regioni botaniche più preziose d'Italia. Puri, artigianali, sostenibili."
+  lang={lang}
+  currentPath="/it"
+>
+  <Hero lang={lang} />
+
+  <FeaturedProducts lang={lang} />
+
+  <!-- Divider with decorative element -->
+  <div class="container">
+    <div class="flex items-center justify-center gap-8 py-8">
+      <div class="flex-1 h-px bg-gradient-to-r from-transparent to-[var(--color-gold)]/20" />
+      <div class="text-[var(--color-gold)]/30 text-2xl">✦</div>
+      <div class="flex-1 h-px bg-gradient-to-l from-transparent to-[var(--color-gold)]/20" />
+    </div>
+  </div>
+
+  <Philosophy lang={lang} />
+
+  <!-- Benefits Section -->
+  <section class="py-24 md:py-32">
+    <div class="container">
+      <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+        <!-- Benefit 1 -->
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full border border-[var(--color-gold)]/20">
+            <svg class="w-7 h-7 text-[var(--color-gold)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 class="font-serif text-[var(--text-xl)] text-[var(--color-cream)] mb-3">100% Puro</h3>
+          <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">
+            Nessuna fragranza sintetica, riempitivi o additivi. Solo la pura essenza delle botaniche italiane.
+          </p>
+        </div>
+
+        <!-- Benefit 2 -->
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full border border-[var(--color-gold)]/20">
+            <svg class="w-7 h-7 text-[var(--color-gold)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 class="font-serif text-[var(--text-xl)] text-[var(--color-cream)] mb-3">Artigianale</h3>
+          <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">
+            Distillazione in piccoli lotti da maestri artigiani con metodi perfezionati nel corso di generazioni.
+          </p>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full border border-[var(--color-gold)]/20">
+            <svg class="w-7 h-7 text-[var(--color-gold)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+              <path d="M2 12h20"/>
+            </svg>
+          </div>
+          <h3 class="font-serif text-[var(--text-xl)] text-[var(--color-cream)] mb-3">Spedizione Mondiale</h3>
+          <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">
+            Consegniamo i tesori botanici italiani a domicilio in tutta Europa e oltre.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

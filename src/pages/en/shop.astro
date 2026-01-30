@@ -1,0 +1,127 @@
+---
+/**
+ * Shop Page - English
+ *
+ * Full product catalog with filtering and search capabilities.
+ */
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ui/ProductCard.astro';
+import { products } from '../../data/products';
+
+const lang = 'en';
+---
+
+<BaseLayout
+  title="Shop Essential Oils"
+  description="Browse our complete collection of premium Italian essential oils. Hand-harvested, pure, and artisan crafted."
+  lang={lang}
+  currentPath="/en/shop"
+>
+  <!-- Page Header -->
+  <section class="pt-32 pb-16 md:pt-40 md:pb-24">
+    <div class="container">
+      <div class="max-w-2xl">
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-sm text-[var(--color-text-muted)] mb-8">
+          <a href="/en" class="hover:text-[var(--color-gold)] transition-colors">Home</a>
+          <span>/</span>
+          <span class="text-[var(--color-cream)]">Shop</span>
+        </nav>
+
+        <!-- Heading -->
+        <h1 class="mb-6">
+          <span class="block">The Complete</span>
+          <span class="text-[var(--color-gold)]">Collection</span>
+        </h1>
+
+        <p class="text-[var(--text-lg)] leading-relaxed text-[var(--color-text-secondary)]">
+          Each essence is hand-harvested from Italy's most revered botanical regions. Discover your perfect oil.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="pb-24 md:pb-32">
+    <div class="container">
+      <!-- Filter Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-12 pb-8 border-b border-[var(--color-twilight)]/50">
+        <div class="flex items-center gap-4">
+          <span class="text-[var(--color-text-muted)] text-sm">
+            {products.length} products
+          </span>
+        </div>
+
+        <!-- Sort dropdown (placeholder) -->
+        <div class="flex items-center gap-2">
+          <span class="text-[var(--color-text-muted)] text-sm">Sort by:</span>
+          <select class="bg-transparent border border-[var(--color-twilight)] rounded-sm px-3 py-2 text-sm text-[var(--color-cream)] focus:outline-none focus:border-[var(--color-gold)]/50">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name">Name A-Z</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Products -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+        {products.map((product, index) => (
+          <div
+            class="opacity-0"
+            style={`animation: fadeInUp 0.6s ease-out forwards; animation-delay: ${Math.min(index * 100, 600)}ms;`}
+          >
+            <ProductCard product={product} lang={lang} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Badges -->
+  <section class="py-16 border-t border-[var(--color-twilight)]/50">
+    <div class="container">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-[var(--color-gold)] text-2xl mb-2">🌿</div>
+          <div class="text-[var(--color-cream)] text-sm font-medium mb-1">100% Natural</div>
+          <div class="text-[var(--color-text-muted)] text-xs">No synthetic ingredients</div>
+        </div>
+        <div>
+          <div class="text-[var(--color-gold)] text-2xl mb-2">🇮🇹</div>
+          <div class="text-[var(--color-cream)] text-sm font-medium mb-1">Made in Italy</div>
+          <div class="text-[var(--color-text-muted)] text-xs">Authentic Italian origin</div>
+        </div>
+        <div>
+          <div class="text-[var(--color-gold)] text-2xl mb-2">🚚</div>
+          <div class="text-[var(--color-cream)] text-sm font-medium mb-1">Free Shipping</div>
+          <div class="text-[var(--color-text-muted)] text-xs">Orders over €50</div>
+        </div>
+        <div>
+          <div class="text-[var(--color-gold)] text-2xl mb-2">💝</div>
+          <div class="text-[var(--color-cream)] text-sm font-medium mb-1">Gift Wrapping</div>
+          <div class="text-[var(--color-text-muted)] text-xs">Beautiful presentation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  select option {
+    background: var(--color-midnight);
+    color: var(--color-cream);
+  }
+</style>
